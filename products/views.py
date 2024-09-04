@@ -12,6 +12,7 @@ from rest_framework import filters
 from django_filters import rest_framework as django_filters
 from .filters import ProductFilter
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.permissions import IsAuthenticated
 
 
 
@@ -27,16 +28,17 @@ class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
 
 class CustomPagination(PageNumberPagination):
-    page_size = 3
+    page_size = 2
 
 class ProductViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]   # default AllowAny
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
     pagination_class = CustomPagination  # /api/products/?page=2
 
     filter_backends = (django_filters.DjangoFilterBackend, filters.SearchFilter)
-    filterser_class = ProductFilter
+    filterset_class = ProductFilter
     search_fields = ['name','description']
 
 
