@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework',
 	'drf_yasg',
+    'djoser',
+    'rest_framework_simplejwt',
     'products'
 ]
 
@@ -134,7 +136,18 @@ REST_FRAMEWORK = {
 
 
 'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+
+
     ]
 }
+
+SIMPLE_JWT = {
+    'ALGORITHM': '',
+    'SLIDING_TOKEN_LIFETIME':timedelta(minutes=120),  #accses token 2 soatdan so'ng eskiradi,
+    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1), #refresh token 1 kunda eskiradi.
+
+}
+
