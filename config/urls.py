@@ -25,21 +25,23 @@ from drf_yasg import openapi
 from drf_yasg.generators import OpenAPISchemaGenerator
 from rest_framework import permissions
 from rest_framework_simplejwt.views import (
-TokenObtainPairView,
-TokenRefreshView,
-TokenVerifyView
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenVerifyView
 )
+
+
 
 class JWTSchemaGenerator(OpenAPISchemaGenerator):
     def get_security_definitions(self):
         security_definitions = super().get_security_definitions()
-        security_definitions ['Bearer'] = {
+        security_definitions['Bearer'] = {
             'type': 'apiKey',
             'name': 'Authorization',
-            'in': 'header',
-
+            'in': 'header'
         }
         return security_definitions
+
 
 schema_view = get_schema_view(
     openapi.Info(

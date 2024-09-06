@@ -145,7 +145,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ALGORITHM': '',
+    'ALGORITHM': 'HS256',
     'SLIDING_TOKEN_LIFETIME':timedelta(minutes=120),  #accses token 2 soatdan so'ng eskiradi,
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1), #refresh token 1 kunda eskiradi.
 
