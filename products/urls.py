@@ -21,3 +21,4 @@ urlpatterns = [
     path('check-sale/<int:product_id>/', check_flash_sale, name='product-view-history-create'),
     path('product-view/', ProductViewHistoryCreate.as_view(), name='product-view-history-create'),
     path('admin/replenish_stock/<int:product_id>/<int:amount>', admin_replenish_stock, name='admin_replenish_stock'),
+]
