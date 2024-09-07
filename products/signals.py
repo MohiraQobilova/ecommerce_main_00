@@ -1,4 +1,3 @@
-from http.client import responses
 
 import requests
 from django.db.models.signals import post_save
@@ -8,7 +7,7 @@ from pycparser.ply.yacc import token
 from pyexpat.errors import messages
 from urllib3 import request
 
-from .tasks import send_telegram_notification
+
 from .models import Order
 
 
@@ -18,14 +17,16 @@ def notify_admin(sender, instance, created, **kwargs):
         token = settings.TELEGRAM_BOT_TOKEN
         method = 'sendMessage'
 
-        message_text = f"New Oreder: {instance.id}\n Product {instance.product.name}\n Quantity: {instance.quantity}"
-                       f"Client: {instance.customer.username}\n tel: {instance.phone_number}"
+        message_text = f"New Order: {instance.id}\n Product: {instance.product.name}\n Quantity: {instance.quantity}"
+        f"Client: {instance.customer.username}\n tel: {instance.phone_number}"
+
+
 
 
 
         response = requests.post(
             url=f'https://api.telegram.org/bot{token}/{method}',
-            data={'chat_id':,'text':message_text}
+            data={'chat_id':906749196,'text':message_text}
 
         ).json()
 
