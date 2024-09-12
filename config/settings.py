@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'djoser',
     'rest_framework_simplejwt',
 
-
+    'custom_auth',
     'products',
     'billing',
 ]
@@ -96,6 +96,7 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
+AUTH_USER_MODEL = 'custom_auth.CustomUser'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
