@@ -26,10 +26,12 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
+
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'phone_number'
     REQUIRED_FIELDS = []
+
 
     def __str__(self):
         return self.phone_number
